@@ -14,27 +14,21 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-package main
+package handlers
 
 import (
-	"github.com/mdhender/fhoe/internal/config"
-	"github.com/mdhender/fhoe/internal/handlers"
+	"html/template"
 	"net/http"
+	"path/filepath"
 )
 
-// Routes initializes all routes exposed by the Server.
-// Routes are taken from https://github.com/gothinkster/realworld/blob/9686244365bf5681e27e2e9ea59a4d905d8080db/api/swagger.json
-func (s *Server) Routes(cfg *config.Config) error {
-	for _, route := range []struct {
-		pattern string
-		method  string
-		handler http.HandlerFunc
-	}{
-		{"/api/version", "GET", s.handleVersion()},
-	} {
-		s.Router.HandleFunc(route.method, route.pattern, route.handler)
-	}
-	s.Router.NotFound = handlers.Static("/", cfg.Server.WebRoot, true, s.debug)
-
-	return nil
+func Templates(root, filename string) http.Handler {
+	t := template.Must(template.ParseFiles(filepath.Join(root, filename)))
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "GET" {
+			http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+			return
+		}
+		_ = t.Execute(w, r)
+	})
 }

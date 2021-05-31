@@ -55,7 +55,10 @@ func run(cfg *config.Config) error {
 	s.MaxHeaderBytes = 1 << 20 // TODO: make this configurable
 	s.Handler = s.Router
 
-	s.Routes()
+	err := s.Routes(cfg)
+	if err != nil {
+		return err
+	}
 
 	if cfg.Server.TLS.Serve {
 		log.Printf("[main] serving TLS on %s\n", s.Addr)
