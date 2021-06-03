@@ -107,7 +107,7 @@ func (s *Server) handleGetOrdersHelp() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var ctx Context
 		ctx.Site = s.site
-		ctx.Page.Title = fmt.Sprintf("Turn ?")
+		ctx.Page.Title = "Order Entry Help"
 		ctx.Game = "Test"
 
 		s.t.Tracef("executing template %q\n", filename)
