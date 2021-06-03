@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title>FH|{{ .Page.Title }}</title>
+  <link rel="stylesheet" href="/css/normalize-v8.0.1.css">
+  <link rel="stylesheet" href="/css/daleri-mega-v1.2.css" title="Daleri Mega" media="screen,projection" />
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body>
+<div id="top">
+  <p id="skiplinks">Skip to: <a href="#content">content</a> | <a href="#sidebar">sidebar</a></p>
+  <div id="sitetitle">
+    <h1><a href="/cluster">{{ .Site.Title }}</a></h1>
+    <p>There is always room for more...</p>
+  </div>
+  <hr class="clear" />
+</div>
+
+<div id="wrap">
+  <div id="mainmenu">
+    <dl class="nav">
+      <dt><a href="/">Main pages</a></dt>
+      <dd><a href="/cluster">Cluster</a></dd>
+      <dd><a href="/orders">Order Entry</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="nav">
+      <dt><a href="/">...</a></dt>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="nav">
+      <dt><a href="/">...</a></dt>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="nav">
+      <dt><a href="/">...</a></dt>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="introduction">
+      <dt><a href="#">Introduction</a></dt>
+      <dd>Space for a short presentation, a small banner or something else that could need some extra attention.</dd>
+    </dl>
+    <hr class="clear" />
+  </div>
+
+  <div id="content">
+    <h2><a href="#">System {{ $systemID := .System.ID }}{{ $systemID }}</a></h2>
+    <p class="introtext">System {{ $systemID }} contains {{ len .System.Planets }} planets.</p>
+    <p>Click on the link for more information about a planet</p>
+      {{ with .System.Planets }}
+        <ol>
+            {{ range . }}
+              <li><a href="{{ .Link }}">{{ if .Named }}{{ .Name }}{{ else }}Orbit {{ .Orbit }}{{ end }}</a></li>
+            {{ end }}
+        </ol>
+      {{ end }}
+
+    <hr class="clear" />
+  </div>
+
+  <div id="sidebar">
+    <h2>Your own Mega...</h2>
+    <p>Space for presentation, advertisements or extras - or maybe additional navigation links? You decide!</p>
+    <div class="left">
+      <h2>Left menu</h2>
+      <ul class="sidemenu">
+        <li><a href="#">First page</a></li>
+        <li><a href="#">Second page</a></li>
+        <li><a href="#">Third page with subs</a>
+          <ul>
+            <li><a href="#">First subpage</a></li>
+            <li><a href="#">Second subpage</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Fourth page</a></li>
+      </ul>
+      <h2>Notice</h2>
+      <p>For more information on how to use this template to build your own website, and for tools and tutorials that can be useful, go to <a href="http://andreasviklund.com/">andreasviklund.com</a>.</p>
+    </div>
+    <div class="right">
+      <h2>Right menu</h2>
+      <ul class="sidemenu">
+        <li><a href="#">Sixth page</a></li>
+        <li><a href="#">Seventh page</a></li>
+        <li><a href="#">Another page</a></li>
+        <li><a href="#">The last one</a></li>
+      </ul>
+      <h2>Sample links</h2>
+      <ul>
+        <li><a href="#">Sample link 1</a></li>
+        <li><a href="#">Sample link 2</a></li>
+        <li><a href="#">Sample link 3</a></li>
+        <li><a href="#">Sample link 4</a></li>
+      </ul>
+    </div>
+    <hr class="clear" />
+  </div>
+  <hr class="clear" />
+</div>
+
+<div id="footer">
+  <div class="left">
+    <p>&copy; 2021 <a href="https://github.com/mdhender">Michael D Henderson</a> | Template design by Andreas Viklund</p>
+  </div>
+  <div class="right textright">
+    <p>Sample footer menu: <a href="#">Link 1</a> | <a href="#">Link 2</a> | <a href="#">Link 3</a></p>
+    <p class="hide"><a href="#top">Return to top</a></p>
+  </div>
+</div>
+
+</body>
+</html>

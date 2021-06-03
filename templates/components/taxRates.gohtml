@@ -1,0 +1,42 @@
+{{define "yield"}}
+    <h2><a href="/tax-rates">Tax Rates</a></h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Federal</th>
+            <th>State</th>
+            <th>Federal</th>
+            <th>State</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Estimated}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Income.Federal}}</td>
+                <td>{{.Income.State}}</td>
+                <td>{{.Gains.Federal}}</td>
+                <td>{{.Gains.State}}</td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+
+    <h3>Other Tax Input</h3>
+    <ol>
+        {{range .OtherInputs}}
+            <li>{{.Label}}</li>
+            {{with .Text}}
+                <ul>
+                    {{range .}}
+                        <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            {{end}}
+        {{end}}
+    </ol>
+{{end}}

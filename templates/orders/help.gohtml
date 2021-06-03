@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title>FH|{{ .Page.Title }}</title>
+  <link rel="stylesheet" href="/css/normalize-v8.0.1.css">
+  <link rel="stylesheet" href="/css/daleri-mega-v1.2.css" title="Daleri Mega" media="screen,projection" />
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body>
+<div id="top">
+  <p id="skiplinks">Skip to: <a href="#content">content</a> | <a href="#sidebar">sidebar</a></p>
+  <div id="sitetitle">
+    <h1><a href="/cluster">{{ .Site.Title }}</a></h1>
+    <p>There is always room for more...</p>
+  </div>
+  <hr class="clear" />
+</div>
+
+<div id="wrap">
+  <div id="mainmenu">
+    <dl class="nav">
+      <dt><a href="/">Main pages</a></dt>
+      <dd><a href="/cluster">Cluster</a></dd>
+      <dd><a href="/orders">Order Entry</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="nav">
+      <dt><a href="/">...</a></dt>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="nav">
+      <dt><a href="/">...</a></dt>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="nav">
+      <dt><a href="/">...</a></dt>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+      <dd><a href="/">...</a></dd>
+    </dl>
+    <dl class="introduction">
+      <dt><a href="#">Introduction</a></dt>
+      <dd>Space for a short presentation, a small banner or something else that could need some extra attention.</dd>
+    </dl>
+    <hr class="clear" />
+  </div>
+
+  <div id="content">
+    <h2><a href="#">Order Entry: Turn ?</a></h2>
+    <p class="introtext">Summary of commands and options.</p>
+    <table border="1">
+      <thead><tr><td>Command</td><td align="center">Arguments</td><td>Explanation</td></tr></thead>
+      <tr><td>ALLY</td><td align="center">sp</td><td>Declare species "sp" to be an ally</td></tr>
+      <tr><td>AMBUSH</td><td align="center">n</td><td>Spend "n" in preparation for ambush</td></tr>
+      <tr><td>ATTACK</td><td align="center">sp</td><td>Attack opponent "sp"</td></tr>
+      <tr><td>ATTACK</td><td align="center">SP n</td><td>Attack field-distorted species number "n"</td></tr>
+      <tr><td>ATTACK</td><td align="center">0</td><td>Attack all declared enemies</td></tr>
+      <tr><td>AUTO</td><td align="center"></td><td>Automatically generate sensible orders for next turn</td></tr>
+      <tr><td>BASE</td><td align="center">[n] s,base</td><td>Build or increase size of starbase "base" using "n" starbase units from "s"</td></tr>
+      <tr><td>BATTLE</td><td align="center">x y z</td><td>Set the location for a battle</td></tr>
+      <tr><td>BUILD</td><td align="center">n ab</td><td>Build "n" items of class "ab"</td></tr>
+      <tr><td>BUILD</td><td align="center">ship</td><td>Build "ship"</td></tr>
+      <tr><td>BUILD</td><td align="center">ship,n</td><td>Start building "ship", spend only "n"</td></tr>
+      <tr><td>BUILD</td><td align="center">base,n</td><td>Start building starbase "base", spend "n"</td></tr>
+      <tr><td>CONTINUE</td><td align="center">ship</td><td>Finish construction of "ship"</td></tr>
+      <tr><td>CONTINUE</td><td align="center">ship,n</td><td>Continue construction on "ship", spend only "n"</td></tr>
+      <tr><td>CONTINUE</td><td align="center">base,n</td><td>Increase size of starbase "base", spend "n"</td></tr>
+      <tr><td>DESTROY</td><td align="center">ship</td><td>Destroy "ship"</td></tr>
+      <tr><td>DESTROY</td><td align="center">base</td><td>Destroy starbase "base"</td></tr>
+      <tr><td>DEVELOP</td><td align="center">[n]</td><td>Build CUs, IUs, and AUs for producing planet but do not spend more than "n"</td></tr>
+      <tr><td>DEVELOP</td><td align="center">[n] pl</td><td>Build CUs, IUs, and AUs for colony planet "pl" in same sector but do not spend more than "n"</td></tr>
+      <tr><td>DEVELOP</td><td align="center">[n] pl, ship</td><td>Build CUs, IUs, and AUs for colony planet "pl" and load units onto "ship" but do not spend more than "n"</td></tr>
+      <tr><td>DISBAND</td><td align="center">pl</td><td>Disband colony "pl"</td></tr>
+      <tr><td>END</td><td></td><td>End current section of the order form</td></tr>
+      <tr><td>ENEMY</td><td align="center">sp</td><td>Declare species "sp" to be an enemy</td></tr>
+      <tr><td>ENEMY</td><td align="center">n</td><td>Declare all species to be enemies</td></tr>
+      <tr><td>ENGAGE</td><td align="center">n [p]</td><td>Specify combat engagement option "n" and optional planet number "p"</td></tr>
+      <tr><td>ESTIMATE</td><td align="center">sp</td><td>Estimate tech levels of species "sp"</td></tr>
+      <tr><td>HAVEN</td><td align="center">x y x</td><td>Set rendezvous point for ships that withdraw from combat</td></tr>
+      <tr><td>HIDE</td><td align="center"></td><td>Actively hide this planet from alien observation</td></tr>
+      <tr><td>HIDE</td><td align="center">ship</td><td>Keep "ship" out of combat unless you start to lose the battle</td></tr>
+      <tr><td>HIJACK</td><td align="center">sp</td><td>Hijack opponent "sp"</td></tr>
+      <tr><td>HIJACK</td><td align="center">SP n</td><td>Hijack field-distorted species number "n"</td></tr>
+      <tr><td>HIJACK</td><td align="center">0</td><td>Hijack all declared enemies</td></tr>
+      <tr><td>IBUILD</td><td align="center">sp,n ab</td><td>Build "n" items of class "ab" for species "sp"</td></tr>
+      <tr><td>IBUILD</td><td align="center">sp,ship</td><td>Build "ship" for species "sp"</td></tr>
+      <tr><td>IBUILD</td><td align="center">sp,base,n</td><td>Build starbase "base" for species "sp", spend "n"</td></tr>
+      <tr><td>ICONTINUE</td><td align="center">sp ship</td><td>Finish construction of "ship" for species "sp"</td></tr>
+      <tr><td>ICONTINUE</td><td align="center">sp base,n</td><td>Increase size of starbase "base" for species "sp", spend "n"</td></tr>
+      <tr><td>INSTALL</td><td>n ab pl</td><td>Install "n" IUs or AUs on planet "pl"</td></tr>
+      <tr><td>INSTALL</td><td align="center">pl</td><td>Install all available IUs and AUs on planet "pl"</td></tr>
+      <tr><td>INTERCEPT</td><td align="center">n</td><td>Spend "n" in preparation for interception</td></tr>
+      <tr><td>JUMP</td><td align="center">ship,loc</td><td>Have "ship" jump to destination "loc"</td></tr>
+      <tr><td>LAND</td><td align="center">ship,pl</td><td>Have "ship" land on planet in same star system</td></tr>
+      <tr><td>MESSAGE</td><td align="center">sp</td><td>Send a message to species "sp"</td></tr>
+      <tr><td>MOVE</td><td align="center">ship, x y z</td><td>Move "ship" up to one parsec</td></tr>
+      <tr><td>MOVE</td><td align="center">base, x y z</td><td>Tow starbase "base" up to one parsec</td></tr>
+      <tr><td>NAME</td><td align="center">x y z p PL name</td><td>Give "name" to planet "p" at location "x y z"</td></tr>
+      <tr><td>NEUTRAL</td><td align="center">sp</td><td>Declare neutrality towards species "sp"</td></tr>
+      <tr><td>NEUTRAL</td><td align="center">n</td><td>Declare neutrality towards all species</td></tr>
+      <tr><td>ORBIT</td><td align="center">ship,pl</td><td>Have "ship" orbit planet in same star system</td></tr>
+      <tr><td>PJUMP</td><td align="center">ship,loc,bas</td><td>Have "ship" jump to destination "loc" via jump portals on starbase "bas"</td></tr>
+      <tr><td>PRODUCTION</td><td align="center">PL name</td><td>Start production on planet "name"</td></tr>
+      <tr><td>RECYCLE</td><td align="center">n ab</td><td>Recycle "n" items of class "ab"</td></tr>
+      <tr><td>RECYCLE</td><td align="center">ship</td><td>Recycle "ship"</td></tr>
+      <tr><td>RECYCLE</td><td align="center">base</td><td>Recycle starbase "base"</td></tr>
+      <tr><td>REPAIR</td><td align="center">ship,n</td><td>Repair "ship" using "n" onboard damage repair units</td></tr>
+      <tr><td>REPAIR</td><td align="center">base,n</td><td>Repair "base" using "n" onboard damage repair units</td></tr>
+      <tr><td>REPAIR</td><td align="center">x y z [age]</td><td>Repair as many ships/starbases as possible in sector x y z, pooling damage repair units but do not reduce age below "age"</td></tr>
+      <tr><td>RESEARCH</td><td align="center">n</td><td>tech Spend "n" on research in technology "tech"</td></tr>
+      <tr><td>SCAN</td><td align="center">ship</td><td>Have "ship" do a scan of its current location</td></tr>
+      <tr><td>SEND</td><td align="center">n sp</td><td>Send "n" economic units to species "sp"</td></tr>
+      <tr><td>SHIPYARD</td><td align="center"></td><td>Increase shipyard capacity by one.</td></tr>
+      <tr><td>START</td><td align="center">section</td><td>Start processing "section" of the order form.<br />
+          Section must be COMBAT, PRE-DEPARTURE, JUMPS, PRODUCTION, POST-ARRIVAL, or STRIKES.<br />
+          You may enter sections in any order, but the command processor will process them in a specific order.</td></tr>
+      <tr><td>SUMMARY</td><td></td><td>Provide only a brief summary of combat results, instead of listing every single hit and miss</td></tr>
+      <tr><td>TARGET</td><td align="center">n</td><td>Concentrate fire on target type "n" during combat</td></tr>
+      <tr><td>TEACH</td><td align="center">tech [n] sp</td><td>Transfer knowledge of technology "tech" to species "sp" to maximum tech level "n"</td></tr>
+      <tr><td>TELESCOPE</td><td align="center">base</td><td>Operate gravitic telescope on starbase "base"</td></tr>
+      <tr><td>TERRAFORM</td><td align="center">[n] pl</td><td>Terraform planet "pl" using "n" TPs</td></tr>
+      <tr><td>TRANSFER</td><td align="center">n ab s,d</td><td>Transfer "n" items of class "ab" from "s" to "d"</td></tr>
+      <tr><td>UNLOAD</td><td align="center">ship</td><td>Transfer all CUs, IUs, and AUs from "ship" to the planet it is at and install as many IUs and AUs as possible</td></tr>
+      <tr><td>UNLOAD</td><td align="center">base</td><td>Transfer all CUs, IUs, and AUs from "base" to the planet it is at and install as many IUs and AUs as possible</td></tr>
+      <tr><td>UPGRADE</td><td align="center">ship</td><td>Upgrade "ship" to age zero</td></tr>
+      <tr><td>UPGRADE</td><td align="center">base</td><td>Upgrade starbase "base" to age zero</td></tr>
+      <tr><td>UPGRADE</td><td align="center">ship,n</td><td>Upgrade "ship", spend "n"</td></tr>
+      <tr><td>UPGRADE</td><td align="center">base,n</td><td>Upgrade starbase "base", spend "n"</td></tr>
+      <tr><td>VISITED</td><td align="center">x y z</td><td>Mark a star system as having been visited, even if you have not actually been there.</td></tr>
+      <tr><td>WITHDRAW</td><td align="center">n1 n2 n3</td><td>Set conditions for withdrawing from combat</td></tr>
+      <tr><td>WORMHOLE</td><td align="center">ship [,pl]</td><td>Have "ship" jump to opposite end of wormhole and orbit planet "pl" on arrival</td></tr>
+      <tr><td>WORMHOLE</td><td align="center">base [,pl]</td><td>Have starbase "base" jump to opposite end of wormhole and orbit planet "pl" on arrival</td></tr>
+      <tr><td>ZZZ</td><td></td><td>Terminate a MESSAGE</td></tr>
+    </table>
+    <hr class="clear" />
+  </div>
+
+  <div id="sidebar">
+    <h2>Your own Mega...</h2>
+    <p>Space for presentation, advertisements or extras - or maybe additional navigation links? You decide!</p>
+    <div class="left">
+      <h2>Orders</h2>
+      <ul class="sidemenu">
+        <li><a href="/orders/combat">Combat</a></li>
+        <li><a href="/orders/pre-departure">Pre-Departure</a></li>
+        <li><a href="/orders/jumps">Jumps</a></li>
+        <li><a href="/orders/production">Production</a></li>
+        <li><a href="/orders/post-arrival">Post-Arrival</a></li>
+        <li><a href="/orders/strikes">Strikes</a></li>
+        <li class="current"><a href="/orders/help">Help!</a></li>
+      </ul>
+      <h2>Notice</h2>
+      <p>For more information on how to use this template to build your own website, and for tools and tutorials that can be useful, go to <a href="http://andreasviklund.com/">andreasviklund.com</a>.</p>
+    </div>
+    <div class="right">
+      <h2>Right menu</h2>
+      <ul class="sidemenu">
+        <li><a href="#">Sixth page</a></li>
+        <li><a href="#">Seventh page</a></li>
+        <li><a href="#">Another page</a></li>
+        <li><a href="#">The last one</a></li>
+      </ul>
+      <h2>Sample links</h2>
+      <ul>
+        <li><a href="#">Sample link 1</a></li>
+        <li><a href="#">Sample link 2</a></li>
+        <li><a href="#">Sample link 3</a></li>
+        <li><a href="#">Sample link 4</a></li>
+      </ul>
+    </div>
+    <hr class="clear" />
+  </div>
+  <hr class="clear" />
+</div>
+
+<div id="footer">
+  <div class="left">
+    <p>&copy; 2021 <a href="https://github.com/mdhender">Michael D Henderson</a> | Template design by Andreas Viklund</p>
+  </div>
+  <div class="right textright">
+    <p>Sample footer menu: <a href="#">Link 1</a> | <a href="#">Link 2</a> | <a href="#">Link 3</a></p>
+    <p class="hide"><a href="#top">Return to top</a></p>
+  </div>
+</div>
+
+</body>
+</html>

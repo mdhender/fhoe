@@ -1,0 +1,42 @@
+{{define "yield"}}
+    <h2><a href="/report/asset-timeline">Retirement Assets Timeline</a></h2>
+    <h3>{{.Name}} - {{.ID}}</h3>
+    <p>Account Type: Banking</p>
+    <p>Owner: Joint</p>
+    <p>Beginning Balance: {{.StartingBalance}}</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Age</th>
+            <th>Year</th>
+            <th>Starting Balance</th>
+            <th>Contributions to Account</th>
+            <th>Distribution Strategies</th>
+            <th>Required Minimum Distributions</th>
+            <th>Withdrawals for Needs</th>
+            <th>Other Withdrawals</th>
+            <th>Growth Rate</th>
+            <th>Total Growth</th>
+            <th>Account Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Table}}
+            <tr>
+                <td>{{.Age}}</td>
+                <td>{{.Year}}</td>
+                <td align="right">{{.StartingBalance}}</td>
+                <td align="right">{{.ContributionsToAccount}}</td>
+                <td align="right">{{.DistributionStrategies}}</td>
+                <td align="right">{{.RequiredMinimumDistributions}}</td>
+                <td align="right">{{.WithdrawalsForNeed}}</td>
+                <td align="right">{{.OtherWithdrawals}}</td>
+                <td align="right">{{.GrowthRate}}</td>
+                <td align="right">{{.TotalGrowth}}</td>
+                <td align="right">{{.EndingBalance}}</td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+{{end}}

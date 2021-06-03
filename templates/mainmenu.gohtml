@@ -1,0 +1,17 @@
+{{define "mainmenu"}}
+<div id="mainmenu">
+    {{range .Menu}}
+        <dl class="nav">
+            <dt><a href="{{.Link}}">{{.Label}}</a></dt>
+            {{range .Children}}
+                <dd><a href="{{.Link}}">{{.Label}}</a></dd>
+            {{end}}
+        </dl>
+    {{end}}
+    <dl class="introduction">
+        <dt><a href="/">Disclaimer</a></dt>
+        <dd>This is not a substitute for advice from a licensed, fee-based financial planner.</dd>
+    </dl>
+    <hr class="clear" />
+</div>
+{{end}}

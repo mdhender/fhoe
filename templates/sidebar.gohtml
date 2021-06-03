@@ -1,0 +1,24 @@
+{{define "sidebar"}}
+<div id="sidebar">
+    <h2>Your own Mega...</h2>
+    <p>Space for presentation, advertisements or extras - or maybe additional navigation links? You decide!</p>
+    <div class="left">
+        {{template "leftmenu" .LeftMenu}}
+    </div>
+    <div class="right">
+        {{template "rightmenu" .RightMenu}}
+    </div>
+    <hr class="clear" />
+    <h2>Notice</h2>
+    <p>
+        This application should not be relied on for financial planning.
+        It uses assumptions that may or may accurately reflect reality.
+        It also uses guesses about future events.
+        They're you're guesses, but they're still guesses.
+    </p>
+    <p>
+        The author strongly encourages you to seek advice from a licensed professional.
+    </p>
+    <hr class="clear" />
+</div>
+{{end}}

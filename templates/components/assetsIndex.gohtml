@@ -1,0 +1,26 @@
+{{define "yield"}}
+    <h2><a href="/assets">Assets</a></h2>
+    <h3>Asset Summary as of {{.AsOfDate}}</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Market Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Categories}}
+            <tr>
+                <td><a href="{{.Link}}">{{.Name}}</a></td>
+                <td>{{.MarketValue}}</td>
+            </tr>
+        {{end}}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>Total Market Value</td>
+            <td>{{.TotalMarketValue}}</td>
+        </tr>
+        </tfoot>
+    </table>
+{{end}}

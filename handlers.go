@@ -17,9 +17,162 @@
 package main
 
 import (
+	"fmt"
+	"github.com/mdhender/fhoe/internal/way"
+	"github.com/mdhender/fhoe/store"
+	"html/template"
 	"log"
 	"net/http"
+	"path/filepath"
+	"strconv"
 )
+
+// https://curtisvermeeren.github.io/2017/09/14/Golang-Templates-Cheatsheet
+
+type Site struct {
+	Title string
+}
+
+func (s *Server) handleGetCluster() http.HandlerFunc {
+	type Context struct {
+		Site Site
+		Page struct {
+			Title string
+		}
+		Game    string
+		Systems []*store.System
+	}
+	layout := "cluster"
+	filename := filepath.Join(s.Templates.Root, layout+".gohtml")
+	return func(w http.ResponseWriter, r *http.Request) {
+		s.t.Tracef("executing template %q\n", filename)
+		t := template.Must(template.ParseFiles(filename))
+		var ctx Context
+		ctx.Site = s.site
+		ctx.Page.Title = "Cluster"
+		ctx.Game = "Test"
+		ctx.Systems = s.ds.SortedSystems()
+		if err := t.Execute(w, &ctx); err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		s.t.Tracef("executed  template %q\n", filename)
+	}
+}
+
+func (s *Server) handleGetOrder() http.HandlerFunc {
+	type Context struct {
+		Site Site
+		Page struct {
+			Title string
+		}
+		Game   string
+	}
+	layout := "orders/index"
+	filename := filepath.Join(s.Templates.Root, layout+".gohtml")
+	return func(w http.ResponseWriter, r *http.Request) {
+		var ctx Context
+		ctx.Site = s.site
+		ctx.Page.Title = fmt.Sprintf("Turn ?")
+		ctx.Game = "Test"
+
+		s.t.Tracef("executing template %q\n", filename)
+		t, err := template.ParseFiles(filename)
+		if err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		// TODO: should write to a temp buffer, not directly to the response
+		if err := t.Execute(w, &ctx); err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		s.t.Tracef("executed  template %q\n", filename)
+	}
+}
+
+func (s *Server) handleGetOrdersHelp() http.HandlerFunc {
+	type Context struct {
+		Site Site
+		Page struct {
+			Title string
+		}
+		Game   string
+	}
+	layout := "orders/help"
+	filename := filepath.Join(s.Templates.Root, layout+".gohtml")
+	return func(w http.ResponseWriter, r *http.Request) {
+		var ctx Context
+		ctx.Site = s.site
+		ctx.Page.Title = fmt.Sprintf("Turn ?")
+		ctx.Game = "Test"
+
+		s.t.Tracef("executing template %q\n", filename)
+		t, err := template.ParseFiles(filename)
+		if err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		// TODO: should write to a temp buffer, not directly to the response
+		if err := t.Execute(w, &ctx); err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		s.t.Tracef("executed  template %q\n", filename)
+	}
+}
+
+func (s *Server) handleGetSystem() http.HandlerFunc {
+	type Context struct {
+		Site Site
+		Page struct {
+			Title string
+		}
+		Game   string
+		System *store.System
+	}
+	layout := "system"
+	filename := filepath.Join(s.Templates.Root, layout+".gohtml")
+	return func(w http.ResponseWriter, r *http.Request) {
+		val := way.Param(r.Context(), "id")
+		id, err := strconv.Atoi(val)
+		if err != nil {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+		system, ok := s.ds.Systems[id]
+		if !ok {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+
+		var ctx Context
+		ctx.Site = s.site
+		ctx.Page.Title = fmt.Sprintf("System %d", id)
+		ctx.Game = "Test"
+		ctx.System = system
+
+		s.t.Tracef("executing template %q\n", filename)
+		t, err := template.ParseFiles(filename)
+		if err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		// TODO: should write to a temp buffer, not directly to the response
+		if err := t.Execute(w, &ctx); err != nil {
+			s.t.Tracef("%+v", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		s.t.Tracef("executed  template %q\n", filename)
+	}
+}
 
 func (s *Server) handleNotFound() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {

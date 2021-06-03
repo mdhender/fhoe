@@ -1,0 +1,52 @@
+{{define "yield"}}
+    <h2><a href="/income">Income</a></h2>
+    {{range .Summaries}}
+        <h3><a href="/personal-data/{{.ClientID}}">{{.Name}}</a>'s income as of {{$.AsOfDate}}</h3>
+
+        {{if not .Incomes}}
+            <p>{{.Name}} has no current income.</p>
+        {{else}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Income Type</th>
+                    <th>Received Monthly</th>
+                    <th>Received Annually</th>
+                    <th>Total Annual</th>
+                    <th>Estimated Annual Rate of Increase</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range .Incomes}}
+                    <tr>
+                        <td>{{.Type}}</td>
+                        <td>{{.ReceivedMonthly}}</td>
+                        <td>{{.ReceivedAnnually}}</td>
+                        <td>{{.TotalAnnual}}</td>
+                        <td>{{.EstimatedAnnualRateOfIncrease}}</td>
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+        {{end}}
+    {{end}}
+
+    <h3>Direct Income Sources</h3>
+    <p>
+        The following income sources have been identified as potential
+        income sources available during your retirement years and/or
+        in the event either of you were to pass away.
+    </p>
+    {{range .Summaries}}
+        {{range .DirectIncomes}}
+            <h3>{{.Name}}</h3>
+            <p>{{.Type}}</p>
+            <p>Recipient - {{.ClientName}}</p>
+            <p>Monthly amount {{.ReceivedMonthly}}, Present Value</p>
+            <p>Annual amount {{.ReceivedAnnually}}, Present Value</p>
+            <p>{{.PercentTaxable}} taxable</p>
+            <p>Annual increase rate is {{.EstimatedAnnualRateOfIncrease}}</p>
+            <p>This income will begin {{.EffDt}} and end at {{.EndDt}}</p>
+        {{end}}
+    {{end}}
+{{end}}

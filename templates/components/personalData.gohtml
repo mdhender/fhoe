@@ -1,0 +1,29 @@
+{{define "yield"}}
+    <h2><a href="/personal-data">Personal Data</a></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Gender</th>
+            <th>Social Security Benefits</th>
+            <th>Citizenship</th>
+            <th>Age</th>
+            <th>Enddate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="{{.Link}}">{{.ID}}</a></td>
+            <td>{{.Name}}</td>
+            <td>{{.Birthdate}}</td>
+            <td>{{.Gender}}</td>
+            <td>{{.SocialSecurityBenefits}}</td>
+            <td>{{.Citizenship}}</td>
+            <td>{{.Age}}</td>
+            <td>{{.EndDt}}</td>
+        </tr>
+        </tbody>
+    </table>
+{{end}}

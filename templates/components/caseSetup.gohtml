@@ -1,0 +1,15 @@
+{{define "yield"}}
+    <h2><a href="/case-setup">Case Setup</a></h2>
+    <ol>
+        {{range .}}
+            <li>{{.Label}}</li>
+            {{with .Objectives}}
+                <ul>
+                    {{range .}}
+                        <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            {{end}}
+        {{end}}
+    </ol>
+{{end}}

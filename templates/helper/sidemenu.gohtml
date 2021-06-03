@@ -1,0 +1,16 @@
+{{define "helper/sidemenu"}}
+    <ul class="sidemenu">
+        {{range .}}
+            <li {{if .Current}}class="current"{{end}}>
+                <a href="{{.Link}}">{{.Label}}</a>
+                {{if .Children}}
+                    <ul>
+                        {{range .Children}}
+                            <li {{if .Current}}class="current"{{end}}><a href="{{.Link}}">{{.Label}}</a></li>
+                        {{end}}
+                    </ul>
+                {{end}}
+            </li>
+        {{end}}
+    </ul>
+{{end}}
